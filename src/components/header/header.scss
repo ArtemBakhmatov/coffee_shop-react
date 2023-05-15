@@ -1,0 +1,29 @@
+@import '../../scss/variables.scss';
+@import '../../scss/fonts.scss';
+@import '../../scss/general-style.scss';
+
+.header {
+    position: absolute;
+    top: 30px;
+    z-index: 1;
+    width: 100%;
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding: 0 5px;
+        &__flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    .header {
+        top: 15px;
+        &__logo {
+            margin-bottom: 10px;
+        }
+        
+    }
+}   

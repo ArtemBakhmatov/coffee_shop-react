@@ -1,0 +1,28 @@
+@import '../../scss/variables.scss';
+@import '../../scss/fonts.scss';
+@import '../../scss/general-style.scss';
+
+.footer {
+    padding-top: 30px;
+    &__top {
+        width: 425px;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+    }
+    
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+    .footer {
+        &__top {
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}   
