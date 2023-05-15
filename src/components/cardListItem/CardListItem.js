@@ -1,22 +1,24 @@
 import './cardListItem.scss';
 
-import aromisticoCofee from '../../resources/img/types_of_coffee/aromistico_cofee.webp';
+const CardListItem = ({img, alt, name, country, price, like}) => {
 
-const CardListItem = () => {
+    let classNames = 'cardList__item';
+    let classNamesActive = 'cardList__item cardList__item-like';
+    
     return (
-        <li className="cardList__item">
+        <li className={like ? classNamesActive : classNames }>
             <div className="cardList__item-img">
-                <img src={aromisticoCofee} alt="aromistico_cofee"/>
+                <img src={img} alt={alt}/>
             </div>
             
             <div className="cardList__item-title">
-                AROMISTICO Coffee 1 kg
+                {name}
             </div>
             <div className="cardList__item-city">
-                Brazil
+                {country}
             </div>
             <div className="cardList__item-price">
-                6.99$
+                {`${price}$`}
             </div>
             <div className="cardList__item-buttons">
                 <div className="cardList__item-button">
