@@ -4,9 +4,10 @@ import './cardList.scss';
 const CardList = ({data}) => {
 
     const elements = data.map(item => {
+        const {id, ...itemProps} = item;
         return (
             // первый пример (он лучше разворачивает сразу все item-ы)
-            <CardListItem {...item} />
+            <CardListItem key={id} {...itemProps} />
 
             // второй пример вызовов item-ов
             // <CardListItem 
@@ -19,7 +20,8 @@ const CardList = ({data}) => {
         )
     });
 
-    
+    console.log(elements);
+
     return (
         <ul className="container cardList">
                 {elements}

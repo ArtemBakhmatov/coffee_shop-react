@@ -14,6 +14,7 @@ const App = () => {
 
     const data = [  // массив данных (представляем как будто что они с сервера)
         {
+            id: 1,
             img: solimoCofee,
             alt: 'solimo_cofee',
             name: 'Solimo Coffee Beans 2 kg',
@@ -22,6 +23,7 @@ const App = () => {
             like: false
         },
         {
+            id: 2,
             img: prestoCofee,
             alt: 'presto_cofee',
             name: 'Presto Coffee Beans 1 kg',
@@ -30,6 +32,7 @@ const App = () => {
             like: true
         },
         {
+            id: 3,
             img: aromisticoCofee,
             alt: 'aromistico_cofee',
             name: 'AROMISTICO Coffee 1 kg',
