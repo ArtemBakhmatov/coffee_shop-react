@@ -24,7 +24,8 @@ class App extends React.Component {
                     name: 'Solimo Coffee Beans 2 kg',
                     country: 'Brazil',
                     price: 10.73,
-                    like: false
+                    like: false,
+                    favourites: true
                 },
                 {
                     id: 2,
@@ -33,7 +34,8 @@ class App extends React.Component {
                     name: 'Presto Coffee Beans 1 kg',
                     country: 'Columbia',
                     price: 15.99,
-                    like: true
+                    like: true,
+                    favourites: false
                 },
                 {
                     id: 3,
@@ -42,7 +44,8 @@ class App extends React.Component {
                     name: 'AROMISTICO Coffee 1 kg',
                     country: 'Kenya',
                     price: 16.99,
-                    like: false
+                    like: false,
+                    favourites: false
                 }
             ]
         }
@@ -69,12 +72,50 @@ class App extends React.Component {
         })
     }
 
+    onToggleLike = (id) => {
+    //      1 способ
+    //     this.setState(({data}) => {
+    //         const index = data.findIndex(elem => elem.id === id);
+    //         const old = data[index];
+    //         const newItem = {...old, like: !old.like}; // Тут лежит новый объект
+    //         const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
+
+    //         return {
+    //             data: newArr
+    //         }
+    //     })
+
+        // 2 способ
+        this.setState(({data}) => ({
+            data: data.map(item => {
+                if (item.id === id) {
+                    return {...item, like: !item.like}
+                }
+                return item;
+            })
+        }))
+    }
+
+    onToggleFavourites = (id) => {
+        this.setState(({data}) => ({
+            data: data.map(item => {
+                if (item.id === id) {
+                    return {...item, favourites: !item.favourites}
+                }
+                return item;
+            })
+        }))
+    }
+
     render() {
+        const cards = this.state.data.length;
+        const likes = this.state.data.filter(item => item.like).length;
+        const favourites = this.state.data.filter(item => item.favourites).length;
         return (
             <>
                 <Header/>
                 <MainBg/>
-                <CofeeInfo/>
+                <CofeeInfo cards={cards} likes={likes} favourites={favourites} />
                 <section className="search">
                     <div className="container search__flex">
                         <SearchPanel/>
@@ -83,7 +124,9 @@ class App extends React.Component {
                     <div className="container">
                         <CardList 
                             data={this.state.data}
-                            onDelete={this.deleteItem} />
+                            onDelete={this.deleteItem}
+                            onToggleLike={this.onToggleLike}
+                            onToggleFavourites={this.onToggleFavourites} />
                     </div>
                 </section>
                 <Footer/>

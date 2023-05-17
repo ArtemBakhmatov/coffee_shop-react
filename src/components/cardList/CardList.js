@@ -1,7 +1,7 @@
 import CardListItem from '../cardListItem/CardListItem';
 import './cardList.scss';
 
-const CardList = ({data, onDelete}) => {
+const CardList = ({data, onDelete, onToggleLike, onToggleFavourites}) => {
 
     const elements = data.map(item => {
         const {id, ...itemProps} = item;
@@ -10,7 +10,9 @@ const CardList = ({data, onDelete}) => {
             <CardListItem 
                 key={id} 
                 {...itemProps}
-                onDelete={() => onDelete(id)} />
+                onDelete={() => onDelete(id)}
+                onToggleLike={() => onToggleLike(id)}
+                onToggleFavourites={() => onToggleFavourites(id)} />
 
             // второй пример вызовов item-ов
             // <CardListItem 
