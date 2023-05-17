@@ -48,13 +48,15 @@ const App = () => {
             <Header/>
             <MainBg/>
             <CofeeInfo/>
-            <div className="search">
+            <section className="search">
                 <div className="container search__flex">
                     <SearchPanel/>
                     <ButtonsFilter/>   
                 </div>
-            </div>
-            <CardList data={data} />
+                <div className="container">
+                    <CardList data={data} />
+                </div>
+            </section>
             <Footer/>
         </>
     )

@@ -23,7 +23,7 @@ const CardList = ({data}) => {
     console.log(elements);
 
     return (
-        <ul className="container cardList">
+        <ul className="cardList">
                 {elements}
         </ul>
     )
