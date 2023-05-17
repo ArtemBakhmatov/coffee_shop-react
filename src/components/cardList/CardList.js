@@ -1,13 +1,16 @@
 import CardListItem from '../cardListItem/CardListItem';
 import './cardList.scss';
 
-const CardList = ({data}) => {
+const CardList = ({data, onDelete}) => {
 
     const elements = data.map(item => {
         const {id, ...itemProps} = item;
         return (
             // первый пример (он лучше разворачивает сразу все item-ы)
-            <CardListItem key={id} {...itemProps} />
+            <CardListItem 
+                key={id} 
+                {...itemProps}
+                onDelete={() => onDelete(id)} />
 
             // второй пример вызовов item-ов
             // <CardListItem 

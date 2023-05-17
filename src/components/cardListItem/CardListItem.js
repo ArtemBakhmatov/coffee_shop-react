@@ -26,7 +26,7 @@ class CardListItem extends React.Component {
     }
 
     render() {
-        const {img, alt, name, country, price} = this.props;
+        const {img, alt, name, country, price, onDelete} = this.props;
         const {like, favourites} = this.state;
 
         let classNames = 'cardList__item';
@@ -62,7 +62,8 @@ class CardListItem extends React.Component {
                     </button>
                     <button 
                         type="button"
-                        className="cardList__item-button">
+                        className="cardList__item-button"
+                        onClick={onDelete}>
                         <i className="fas fa-trash"></i>
                     </button>
                     <button 
