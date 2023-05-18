@@ -47,7 +47,8 @@ class App extends React.Component {
                     like: false,
                     favourites: false
                 }
-            ]
+            ],
+            term: ''
         }
     }
 
@@ -107,10 +108,28 @@ class App extends React.Component {
         }))
     }
 
+    searchCard = (items, term) => { // поиск карточки
+        if (term.length === 0) {
+            return items;
+        }
+
+        return items.filter(item => {
+            return item.name.indexOf(term) > -1; // -1 означает если ничего не найдено
+        })
+    }
+
+    onUpdateSearch = (term) => {                // обновление поиска 
+        this.setState({term: term});
+    }
+
     render() {
+        const {data, term} = this.state;
+
         const cards = this.state.data.length;
         const likes = this.state.data.filter(item => item.like).length;
         const favourites = this.state.data.filter(item => item.favourites).length;
+
+        const visibleData = this.searchCard(data, term);
         return (
             <>
                 <Header/>
@@ -118,12 +137,12 @@ class App extends React.Component {
                 <CofeeInfo cards={cards} likes={likes} favourites={favourites} />
                 <section className="search">
                     <div className="container search__flex">
-                        <SearchPanel/>
+                        <SearchPanel onUpdateSearch={this.onUpdateSearch} />
                         <ButtonsFilter/>   
                     </div>
                     <div className="container">
                         <CardList 
-                            data={this.state.data}
+                            data={visibleData}
                             onDelete={this.deleteItem}
                             onToggleLike={this.onToggleLike}
                             onToggleFavourites={this.onToggleFavourites} />
