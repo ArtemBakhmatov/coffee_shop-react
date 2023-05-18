@@ -48,7 +48,8 @@ class App extends React.Component {
                     favourites: false
                 }
             ],
-            term: ''
+            term: '',
+            filter: 'All'
         }
     }
 
@@ -122,14 +123,31 @@ class App extends React.Component {
         this.setState({term: term});
     }
 
+    filterPost = (items, filter) => {
+        switch (filter) {
+            case 'Brazil':
+                return items.filter(item => item.country === 'Brazil');
+            case 'Kenya':
+                return items.filter(item => item.country === 'Kenya');
+            case 'Columbia':
+                return items.filter(item => item.country === 'Columbia');
+            default:
+                return items;
+        }
+    }
+
+    onFilterSelect = (filter) => {
+        this.setState({filter: filter});
+    }
+
     render() {
-        const {data, term} = this.state;
+        const {data, term, filter} = this.state;
 
         const cards = this.state.data.length;
         const likes = this.state.data.filter(item => item.like).length;
         const favourites = this.state.data.filter(item => item.favourites).length;
 
-        const visibleData = this.searchCard(data, term);
+        const visibleData = this.filterPost(this.searchCard(data, term), filter);
         return (
             <>
                 <Header/>
@@ -138,7 +156,7 @@ class App extends React.Component {
                 <section className="search">
                     <div className="container search__flex">
                         <SearchPanel onUpdateSearch={this.onUpdateSearch} />
-                        <ButtonsFilter/>   
+                        <ButtonsFilter filter={filter} onFilterSelect={this.onFilterSelect} />   
                     </div>
                     <div className="container">
                         <CardList 
