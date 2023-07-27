@@ -5,6 +5,7 @@ import "./footer.scss";
 import logoBack from '../../resources/icons/logo_black.svg';
 
 const boolean = true;
+const styleBeans = 'beans';
 
 const Footer = () => {
     return (
@@ -15,7 +16,7 @@ const Footer = () => {
                     <ListLinks boolean={boolean} />
                 </div>
                 <div className="footer__bottom">
-                    <Beans boolean={boolean} />
+                    <Beans boolean={boolean} styleBeans={styleBeans} />
                 </div>
             </div>
         </footer>

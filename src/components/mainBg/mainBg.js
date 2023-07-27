@@ -1,12 +1,17 @@
+import Beans from '../beans/Beans';
+import MainButton from '../mainButton/MainButton';
+
 import './mainBg.scss';
 
-const MainBg = () => {
+const MainBg = (props) => {
     return (
-        <section className="mainBg">
+        <section className={props.styleBg}>
             <div className="container">
                 <h1 className="title">
-                    Our Coffee
+                    {props.title}
                 </h1>
+                <Beans styleBeans={props.styleBeans} />
+                <MainButton styleButton={props.styleButton} />
             </div>
         </section>
     )

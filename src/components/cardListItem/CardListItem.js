@@ -33,7 +33,8 @@ const CardListItem = (props) => {
     const starActive = 'cardList__item-favourites cardList__item-favourites__active'
 
     return (
-        <li className={like ? classNamesActive : classNames }>
+        <li 
+            className={like ? classNamesActive : classNames }>
             <div className={favourites ? starActive : star}>
                 <i className="fas fa-star"></i>
             </div>

@@ -1,0 +1,41 @@
+@import '../../scss/variables.scss';
+@import '../../scss/fonts.scss';
+@import '../../scss/general-style.scss';
+
+.error {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+    overflow: hidden;
+    &__gif {
+        width: 500px;
+        margin: 30px auto 30px auto;
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+    &__message {
+        text-align: center;
+        font-size: 18px;
+    }
+    &__link {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+    .error__gif {
+        width: 300px;
+        margin: 25px auto 15px auto;
+    }
+}   

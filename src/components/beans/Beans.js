@@ -9,7 +9,7 @@ const lineBlack = 'stripe stripe__black',
 
 const Beans = (props) => {
     return (
-        <div className="beans">
+        <div className={props.styleBeans}>
             <div className={props.boolean ? lineBlack : lineWhite}></div>
             <img 
                 src={props.boolean ? beansBlack : beansWhite} 
